@@ -92,13 +92,17 @@ function Moves({ history, setCurrentMove, currentMove }) {
         } else {
             description = 'Go to game start';
         }
-        return (
-            <li key={move}>
-                <button onClick={() => jumpTo(move)}>{description}</button>
-            </li>
-        );
+        return description;
     });
-    return <ol>{moves}</ol>;
+    return (
+        <ol>
+            {moves.map((value, key) => (
+                <li key={key}>
+                    <button onClick={(event) => jumpTo(key)}>{value}</button>
+                </li>
+            ))}
+        </ol>
+    );
 }
 
 export default function Game() {
